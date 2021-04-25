@@ -1,0 +1,9 @@
+---
+- name: Install docker engine
+  include_tasks: docker-ce.yml
+
+- name: Install docker-compose
+  include_tasks: docker-compose.yml
+
+- name: Flush handlers
+  meta: flush_handlers
