@@ -1,0 +1,10 @@
+galaxy_info:
+  role_name: creator-docker-ansible
+  company: Creator, Inc.
+  author: elgeeko-creator
+  description: "Ansible role to install docker into Ubuntu systems."
+  license: proprietary
+  platforms:
+    - name: Ubuntu
+      versions:
+        - all
