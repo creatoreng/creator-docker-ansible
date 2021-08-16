@@ -29,7 +29,7 @@
       - docker
     append: true
   become: true
-  notify: reboot
+  notify: docker_reboot
   # yes you really need to reboot on group change, since Ansible
   # connects over an SSH session, it's the most
   # sure-fire way to ensure permissions take effect

@@ -5,7 +5,7 @@
     state: restarted
   become: true
 
-- name: reboot
+- name: docker_reboot
   reboot:
     msg: "Ansible reboot - docker role"
   become: true
