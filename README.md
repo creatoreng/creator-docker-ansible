@@ -3,6 +3,7 @@ Features:
 - latest docker-ce
 - docker python module
 - docker-compose
+- (optional) performs a docker system prune
 
 # Requirements
 - ansible
