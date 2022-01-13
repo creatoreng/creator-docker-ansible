@@ -1,32 +1,34 @@
 ---
-- name: Add docker GPG apt key
+- name: apt add docker GPG apt key
   ansible.builtin.apt_key:
     url: https://download.docker.com/{{ ansible_system | lower }}/{{ ansible_distribution | lower }}/gpg
   become: true
 
-- name: Add docker apt repository
+- name: apt add docker repository
   ansible.builtin.apt_repository:
     repo: "deb https://download.docker.com/{{ ansible_system | lower}}/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable"
   become: true
+  register: repo
 
 - name: apt update cache
   ansible.builtin.apt:
     update_cache: true
   become: true
+  when: repo.changed
 
-- name: Install docker-ce
+- name: docker-ce install
   ansible.builtin.apt:
     pkg: docker-ce
     state: latest
   become: true
 
-- name: Install docker module for python
+- name: docker python module install
   ansible.builtin.pip:
     name: docker
     state: latest
   become: true
 
-- name: Add {{ ansible_user }} to docker group
+- name: group docker add user {{ ansible_user }}
   ansible.builtin.user:
     name: "{{ ansible_user }}"
     groups:

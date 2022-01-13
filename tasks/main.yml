@@ -5,14 +5,11 @@
     cache_valid_time: 3600 # 1 hr
   become: true
 
-- name: Install docker engine
+- name: docker engine install
   ansible.builtin.import_tasks: docker-ce.yml
 
-- name: Install docker-compose
+- name: docker-compose install
   ansible.builtin.import_tasks: docker-compose.yml
-
-- name: Flush handlers
-  ansible.builtin.meta: flush_handlers
 
 - name: docker prune
   community.docker.docker_prune:
